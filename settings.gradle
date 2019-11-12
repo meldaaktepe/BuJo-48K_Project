@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='BuJo-48K_Projecjt'
