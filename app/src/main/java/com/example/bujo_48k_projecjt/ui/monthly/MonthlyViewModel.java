@@ -1,19 +1,21 @@
-package com.example.bujo_48k_projecjt.ui.home;
+package com.example.bujo_48k_projecjt.ui.monthly;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
-
+public class MonthlyViewModel extends ViewModel
+{
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public MonthlyViewModel()
+    {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is Monthly fragment");
     }
 
-    public LiveData<String> getText() {
+    public LiveData<String> getText()
+    {
         return mText;
     }
 }

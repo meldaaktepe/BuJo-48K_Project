@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">BuJo-48K_Projecjt</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_daily">Daily</string>
+    <string name="title_monthly">Monthly</string>
+    <string name="title_yearly">Yearly</string>
+    <string name="title_collections">Collections</string>
+    <string name="title_settings">Settings</string>
 </resources>

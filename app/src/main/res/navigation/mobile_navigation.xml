@@ -3,23 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_monthly">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.bujo_48k_projecjt.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_monthly"
+        android:name="com.example.bujo_48k_projecjt.ui.monthly.MonthlyFragment"
+        android:label="@string/title_monthly"
+        tools:layout="@layout/fragment_monthly" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.bujo_48k_projecjt.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_daily"
+        android:name="com.example.bujo_48k_projecjt.ui.daily.DailyFragment"
+        android:label="@string/title_daily"
+        tools:layout="@layout/fragment_daily" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.bujo_48k_projecjt.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_yearly"
+        android:name="com.example.bujo_48k_projecjt.ui.yearly.YearlyFragment"
+        android:label="@string/title_yearly"
+        tools:layout="@layout/fragment_yearly" />
+
+    <fragment
+        android:id="@+id/navigation_collections"
+        android:name="com.example.bujo_48k_projecjt.ui.collections.CollectionsFragment"
+        android:label="@string/title_collections"
+        tools:layout="@layout/fragment_collections" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.bujo_48k_projecjt.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

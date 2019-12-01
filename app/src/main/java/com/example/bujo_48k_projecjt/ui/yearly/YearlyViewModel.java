@@ -1,19 +1,22 @@
-package com.example.bujo_48k_projecjt.ui.dashboard;
+package com.example.bujo_48k_projecjt.ui.yearly;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class YearlyViewModel extends ViewModel
+{
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public YearlyViewModel()
+    {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is Yearly fragment");
     }
 
-    public LiveData<String> getText() {
+    public LiveData<String> getText()
+    {
         return mText;
     }
 }
