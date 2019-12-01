@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_monthly">
+    app:startDestination="@+id/navigation_daily">
 
     <fragment
         android:id="@+id/navigation_monthly"
@@ -27,7 +27,8 @@
         android:id="@+id/navigation_collections"
         android:name="com.example.bujo_48k_projecjt.ui.collections.CollectionsFragment"
         android:label="@string/title_collections"
-        tools:layout="@layout/fragment_collections" />
+        tools:layout="@layout/fragment_collections" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_settings"
