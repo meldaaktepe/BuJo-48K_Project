@@ -20,6 +20,8 @@ public abstract class BaseFragment extends Fragment
 
     static private final String TAG = "BaseFragment";
 
+    protected abstract int getLayoutId();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -39,6 +41,4 @@ public abstract class BaseFragment extends Fragment
 
     @Override
     public abstract void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState);
-
-    protected abstract int getLayoutId();
 }
