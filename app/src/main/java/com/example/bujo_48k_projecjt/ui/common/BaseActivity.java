@@ -25,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
         mViewDataBinding = DataBindingUtil.setContentView(this, getLayoutId());
 
-        Log.d(TAG, "Created -> " + getResources().getResourceName(getLayoutId()));
-    }
+        Log.d(TAG, "Created -> " + this.getClass().getSimpleName()
+                + ", with layout -> " + getResources().getResourceName(getLayoutId())
+        );    }
 }

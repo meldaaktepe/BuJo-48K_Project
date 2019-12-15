@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 
 public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionType> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder>
 {
+    static private final String TAG = "BaseRecyclerViewAdapter";
+
     class ViewHolder extends RecyclerView.ViewHolder
     {
         private ViewDataBinding mBinding;
@@ -41,16 +44,21 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
 
     protected abstract int getItemViewId();
 
-    public BaseRecyclerViewAdapter(BaseRecyclerViewModel<Model, ActionType> baseRecyclerViewModel, LifecycleOwner lifecycleOwner)
+    public BaseRecyclerViewAdapter(
+            BaseRecyclerViewModel<Model, ActionType> baseRecyclerViewModel,
+            LifecycleOwner lifecycleOwner)
     {
         this(baseRecyclerViewModel.getLiveData(), baseRecyclerViewModel, lifecycleOwner);
     }
 
-    public BaseRecyclerViewAdapter(MutableLiveData<ArrayList<Model>> observableData,
-                                   BaseViewModel<Model, ActionType> viewModel,
-                                   LifecycleOwner lifecycleOwner)
+    public BaseRecyclerViewAdapter(
+            MutableLiveData<ArrayList<Model>> observableData,
+            BaseViewModel<Model, ActionType> viewModel,
+            LifecycleOwner lifecycleOwner)
     {
         super();
+
+        Log.d(TAG, "Created -> " + this.getClass().getSimpleName());
 
         observableData.observe(lifecycleOwner, new Observer<ArrayList<Model>>()
         {
@@ -68,7 +76,6 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-
         ViewDataBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 getItemViewId(),
@@ -82,20 +89,17 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
     @Override
     public void onBindViewHolder(@NonNull BaseRecyclerViewAdapter.ViewHolder holder, int position)
     {
-
         setViewHolderBindings(holder.mBinding, mData.get(position));
     }
 
     @Override
     public int getItemCount()
     {
-
         return mData.size();
     }
 
     public void setData(final ArrayList<Model> newData)
     {
-
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback()
         {
             @Override
