@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="30dp"
         android:clickable="true"
         app:backgroundTint="#f2e9bf"
         app:layout_constraintBottom_toBottomOf="parent"
