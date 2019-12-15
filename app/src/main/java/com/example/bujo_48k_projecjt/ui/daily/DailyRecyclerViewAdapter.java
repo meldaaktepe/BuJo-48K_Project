@@ -22,7 +22,7 @@ public class DailyRecyclerViewAdapter extends BaseRecyclerViewAdapter<Task, Basi
     @Override
     protected void setViewHolderBindings(ViewDataBinding binding, Task model)
     {
-        binding.setVariable(BR.vievModel, new DailyItemViewModel(model));
+        binding.setVariable(BR.viewModel, new DailyItemViewModel(model));
     }
 
     @Override

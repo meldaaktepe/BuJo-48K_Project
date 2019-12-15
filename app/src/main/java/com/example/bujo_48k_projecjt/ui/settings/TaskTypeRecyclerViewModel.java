@@ -8,7 +8,6 @@ import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewMode
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class TaskTypeRecyclerViewModel extends BaseRecyclerViewModel<TaskType, BasicAction>
 {

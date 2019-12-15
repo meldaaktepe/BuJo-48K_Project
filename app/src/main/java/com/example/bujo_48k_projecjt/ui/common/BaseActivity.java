@@ -1,14 +1,12 @@
 package com.example.bujo_48k_projecjt.ui.common;
 
+import android.os.Bundle;
+import android.util.Log;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-
-import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-
-import android.util.Log;
 
 public abstract class BaseActivity extends AppCompatActivity
 {
@@ -27,5 +25,6 @@ public abstract class BaseActivity extends AppCompatActivity
 
         Log.d(TAG, "Created -> " + this.getClass().getSimpleName()
                 + ", with layout -> " + getResources().getResourceName(getLayoutId())
-        );    }
+        );
+    }
 }
