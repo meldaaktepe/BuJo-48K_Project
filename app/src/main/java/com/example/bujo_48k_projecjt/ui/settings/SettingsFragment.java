@@ -31,8 +31,6 @@ public class SettingsFragment extends BaseFragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-        //        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
-
         BindTaskTypeRecyclerView(view);
 
         taskTypeRecyclerViewModel.fetchData();
@@ -69,5 +67,4 @@ public class SettingsFragment extends BaseFragment
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
     }
-
 }

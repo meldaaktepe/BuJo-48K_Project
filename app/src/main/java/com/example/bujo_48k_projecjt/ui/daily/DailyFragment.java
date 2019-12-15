@@ -1,14 +1,10 @@
 package com.example.bujo_48k_projecjt.ui.daily;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,28 +12,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
 import com.example.bujo_48k_projecjt.models.Task;
-import com.example.bujo_48k_projecjt.models.TaskType;
 import com.example.bujo_48k_projecjt.ui.common.Action.Action;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
-import com.example.bujo_48k_projecjt.ui.settings.TaskTypeRecyclerViewAdapter;
-import com.example.bujo_48k_projecjt.ui.settings.TaskTypeRecyclerViewModel;
 
 public class DailyFragment extends BaseFragment
 {
     private DailyViewModel dailyViewModel;
+
     private DailyRecyclerViewModel dailyRecyclerViewModel;
 
     @Override
-    protected int getLayoutId() {
-        return R.id.text_daily;
+    protected int getLayoutId()
+    {
+        return R.layout.fragment_daily;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
         dailyViewModel = ViewModelProviders.of(this).get(DailyViewModel.class);
 
+        BinddailyRecyclerView(view);
+
+        dailyRecyclerViewModel.fetchData();
     }
 
     private void BinddailyRecyclerView(View view)

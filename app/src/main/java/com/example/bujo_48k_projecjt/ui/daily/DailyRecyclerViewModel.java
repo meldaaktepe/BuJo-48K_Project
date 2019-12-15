@@ -8,22 +8,22 @@ import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewMode
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
-public class DailyRecyclerViewModel extends BaseRecyclerViewModel<Task, BasicAction> {
-
+public class DailyRecyclerViewModel extends BaseRecyclerViewModel<Task, BasicAction>
+{
     private Date d;
     private Task event;
-    @Override
-    public void fetchData() {
 
-        try {
-            TaskType tastType = new TaskType(5,"hi", 05);
+    @Override
+    public void fetchData()
+    {
+        try
+        {
+            TaskType tastType = new TaskType(5, "hi", 05);
             ArrayList<Task> eventList = new ArrayList<>();
             d = new SimpleDateFormat("dd/MM/yyyy").parse("06/04/2019");
-            event = new Task("CS310 Midterm1", "Midterm at LO65 from 9am", d,  tastType);
+            event = new Task("CS310 Midterm1", "Midterm at LO65 from 9am", d, tastType);
             eventList.add(event);
 
             d = new SimpleDateFormat("dd/MM/yyyy").parse("07/04/2019");
@@ -76,7 +76,8 @@ public class DailyRecyclerViewModel extends BaseRecyclerViewModel<Task, BasicAct
 
             mData.setValue(eventList);
 
-        } catch (ParseException e) {
+        } catch (ParseException e)
+        {
             e.printStackTrace();
         }
     }
