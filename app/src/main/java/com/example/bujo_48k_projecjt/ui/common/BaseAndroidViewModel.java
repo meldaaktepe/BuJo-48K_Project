@@ -1,16 +1,18 @@
 package com.example.bujo_48k_projecjt.ui.common;
 
+import android.app.Application;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 
 import com.example.bujo_48k_projecjt.models.BaseModel;
 import com.example.bujo_48k_projecjt.ui.common.Action.Action;
 
-public abstract class BaseViewModel<Model extends BaseModel, ActionType> extends ViewModel
+public abstract class BaseAndroidViewModel<Model extends BaseModel, ActionType> extends AndroidViewModel
 {
     static private final String TAG = "BaseViewModel";
 
@@ -26,12 +28,10 @@ public abstract class BaseViewModel<Model extends BaseModel, ActionType> extends
         mCurrentAction.observe(lifecycleOwner, observer);
     }
 
-    public BaseViewModel()
+    public BaseAndroidViewModel(@NonNull Application application)
     {
-        super();
+        super(application);
 
         Log.d(TAG, "Created -> " + this.getClass().getSimpleName());
     }
-
-
 }

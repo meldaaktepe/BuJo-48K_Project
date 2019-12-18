@@ -1,21 +1,9 @@
 package com.example.bujo_48k_projecjt.ui.collections;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import com.example.bujo_48k_projecjt.models.collections.Item;
+import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
+import com.example.bujo_48k_projecjt.ui.common.BaseViewModel;
 
-public class CollectionsViewModel extends ViewModel
+public class CollectionsViewModel extends BaseViewModel<Item, BasicAction>
 {
-    private MutableLiveData<String> mText;
-
-    public CollectionsViewModel()
-    {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is Collections fragment");
-    }
-
-    public LiveData<String> getText()
-    {
-        return mText;
-    }
 }

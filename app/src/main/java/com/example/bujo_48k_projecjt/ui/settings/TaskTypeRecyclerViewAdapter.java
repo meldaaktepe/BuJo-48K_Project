@@ -21,13 +21,6 @@ public class TaskTypeRecyclerViewAdapter extends BaseRecyclerViewAdapter<TaskTyp
     protected void setViewHolderBindings(ViewDataBinding binding, TaskType model)
     {
         binding.setVariable(BR.viewModel, new TaskTypeItemViewModel(model));
-
-        //        binding.getRoot().setOnClickListener(new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View v) {
-        //                mViewModel.setAction(new Action<>(model, BasicAction.RECYCLER_ITEM_CLICK));
-        //            }
-        //        });
     }
 
     @Override

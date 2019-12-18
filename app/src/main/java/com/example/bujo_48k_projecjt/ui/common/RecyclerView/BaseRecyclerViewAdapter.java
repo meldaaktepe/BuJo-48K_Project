@@ -16,9 +16,10 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.models.BaseModel;
-import com.example.bujo_48k_projecjt.ui.common.BaseViewModel;
+import com.example.bujo_48k_projecjt.ui.common.BaseAndroidViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionType> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder>
 {
@@ -37,7 +38,7 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
     }
 
     protected final ArrayList<Model> mData = new ArrayList<>();
-    protected final BaseViewModel<Model, ActionType> mViewModel;
+    protected final BaseAndroidViewModel<Model, ActionType> mViewModel;
 
     protected abstract void setViewHolderBindings(ViewDataBinding binding, Model model);
 
@@ -51,18 +52,18 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
     }
 
     public BaseRecyclerViewAdapter(
-            MutableLiveData<ArrayList<Model>> observableData,
-            BaseViewModel<Model, ActionType> viewModel,
+            MutableLiveData<List<Model>> observableData,
+            BaseAndroidViewModel<Model, ActionType> viewModel,
             LifecycleOwner lifecycleOwner)
     {
         super();
 
         Log.d(TAG, "Created -> " + this.getClass().getSimpleName());
 
-        observableData.observe(lifecycleOwner, new Observer<ArrayList<Model>>()
+        observableData.observe(lifecycleOwner, new Observer<List<Model>>()
         {
             @Override
-            public void onChanged(@Nullable ArrayList<Model> changedData)
+            public void onChanged(@Nullable List<Model> changedData)
             {
                 setData(changedData);
             }
@@ -97,7 +98,7 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
         return mData.size();
     }
 
-    public void setData(final ArrayList<Model> newData)
+    public void setData(final List<Model> newData)
     {
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback()
         {

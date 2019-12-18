@@ -1,36 +1,71 @@
 package com.example.bujo_48k_projecjt.ui.collections;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
+import com.example.bujo_48k_projecjt.models.collections.CollectionWithItems;
+import com.example.bujo_48k_projecjt.ui.common.Action.Action;
+import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
+import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
 
-public class CollectionsFragment extends Fragment
+public class CollectionsFragment extends BaseFragment
 {
     private CollectionsViewModel collectionsViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    private CollectionRecyclerViewModel collectionRecyclerViewModel;
+
+    @Override
+    protected int getLayoutId()
+    {
+        return R.layout.fragment_collections;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         collectionsViewModel = ViewModelProviders.of(this).get(CollectionsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_collections, container, false);
-        final TextView textView = root.findViewById(R.id.text_collections);
-        collectionsViewModel.getText().observe(this, new Observer<String>()
+
+        BindCollectionRecyclerView(view);
+        collectionRecyclerViewModel.fetchData();
+    }
+
+    private void BindCollectionRecyclerView(View view)
+    {
+        RecyclerView recyclerView = view.findViewById(R.id.collection_list);
+
+        collectionRecyclerViewModel = ViewModelProviders.of(this).get(CollectionRecyclerViewModel.class);
+
+        CollectionRecyclerViewAdapter adapter = new CollectionRecyclerViewAdapter(
+                collectionRecyclerViewModel,
+                this
+        );
+
+        collectionRecyclerViewModel.observeAction(this, new Observer<Action<CollectionWithItems, BasicAction>>()
         {
             @Override
-            public void onChanged(@Nullable String s)
+            public void onChanged(@Nullable Action<CollectionWithItems, BasicAction> chatAction)
             {
-                textView.setText(s);
+                if (chatAction == null) return;
+
+                switch (chatAction.getActionType())
+                {
+                    case RECYCLER_ITEM_CLICK:
+                        break;
+                }
             }
         });
-        return root;
+
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
     }
 }
