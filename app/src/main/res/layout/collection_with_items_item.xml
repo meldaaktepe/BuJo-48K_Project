@@ -6,13 +6,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.bujo_48k_projecjt.ui.collections.CollectionItemViewModel" />
+            type="com.example.bujo_48k_projecjt.ui.collections.collection_recycler.CollectionItemViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{viewModel::OnClick}">
 
         <TextView
             android:id="@+id/collection_title"
@@ -20,11 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text='@{viewModel.collection.title, default="Collection Title"}'
+            android:text='@{viewModel.model.title, default="Collection Title"}'
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

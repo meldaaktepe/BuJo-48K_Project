@@ -1,4 +1,4 @@
-package com.example.bujo_48k_projecjt.ui.settings;
+package com.example.bujo_48k_projecjt.ui.settings.task_type_recycler;
 
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LifecycleOwner;
@@ -20,7 +20,7 @@ public class TaskTypeRecyclerViewAdapter extends BaseRecyclerViewAdapter<TaskTyp
     @Override
     protected void setViewHolderBindings(ViewDataBinding binding, TaskType model)
     {
-        binding.setVariable(BR.viewModel, new TaskTypeItemViewModel(model));
+        binding.setVariable(BR.viewModel, new TaskTypeItemViewModel(mViewModel, model));
     }
 
     @Override

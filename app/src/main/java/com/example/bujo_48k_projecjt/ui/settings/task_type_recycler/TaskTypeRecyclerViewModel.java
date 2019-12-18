@@ -1,4 +1,4 @@
-package com.example.bujo_48k_projecjt.ui.settings;
+package com.example.bujo_48k_projecjt.ui.settings.task_type_recycler;
 
 import android.app.Application;
 import android.graphics.Color;

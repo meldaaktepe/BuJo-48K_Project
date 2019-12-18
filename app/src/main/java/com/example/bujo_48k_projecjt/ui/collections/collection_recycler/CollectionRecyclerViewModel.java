@@ -1,4 +1,4 @@
-package com.example.bujo_48k_projecjt.ui.collections;
+package com.example.bujo_48k_projecjt.ui.collections.collection_recycler;
 
 import android.app.Application;
 

@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import java.util.Random;
 
-@Database(version = 5, entities = {Item.class, Collection.class})
+@Database(version = 5, entities = {Item.class, Collection.class}, exportSchema = false)
 public abstract class CollectionDatabase extends RoomDatabase
 {
     static private CollectionDatabase instance = null;

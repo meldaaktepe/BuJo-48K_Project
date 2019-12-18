@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public abstract class CollectionDAO
     @Query("SELECT * FROM Collection")
     public abstract List<Collection> GetAll();
 
+    @Transaction
     @Query("SELECT * FROM Collection")
     public abstract List<CollectionWithItems> GetAllWithItems();
 

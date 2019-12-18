@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.bujo_48k_projecjt.ui.settings.TaskTypeItemViewModel" />
+            type="com.example.bujo_48k_projecjt.ui.settings.task_type_recycler.TaskTypeItemViewModel" />
 
         <import type="android.view.View" />
 
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@{@string/task_type_emoji(viewModel.taskType.emoji)}"
+            android:text="@{@string/task_type_emoji(viewModel.model.emoji)}"
             android:textStyle="bold"
             tools:text="Task Type Emoji" />
 

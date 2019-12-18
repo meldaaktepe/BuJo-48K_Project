@@ -1,8 +1,9 @@
-package com.example.bujo_48k_projecjt.ui.collections;
+package com.example.bujo_48k_projecjt.ui.collections.collection_recycler;
 
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LifecycleOwner;
 
+import com.example.bujo_48k_projecjt.BR;
 import com.example.bujo_48k_projecjt.R;
 import com.example.bujo_48k_projecjt.models.collections.Collection;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
@@ -21,7 +22,7 @@ public class CollectionRecyclerViewAdapter extends BaseRecyclerViewAdapter<Colle
     @Override
     protected void setViewHolderBindings(ViewDataBinding binding, Collection model)
     {
-        binding.setVariable(com.example.bujo_48k_projecjt.BR.viewModel, new CollectionItemViewModel(model));
+        binding.setVariable(BR.viewModel, new CollectionItemViewModel(mViewModel, model));
     }
 
     @Override
