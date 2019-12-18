@@ -1,17 +1,14 @@
-package com.example.bujo_48k_projecjt.ui.daily;
+package com.example.bujo_48k_projecjt.ui.common;
 
 import com.example.bujo_48k_projecjt.models.Task;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
-import com.example.bujo_48k_projecjt.ui.common.BaseViewModel;
-import com.example.bujo_48k_projecjt.ui.common.itemBaseViewModel;
 
-public class DailyItemViewModel extends itemBaseViewModel
+public class itemBaseViewModel extends BaseViewModel<Task, BasicAction>
 {
     private Task task;
 
-    public DailyItemViewModel(Task task)
+    public itemBaseViewModel(Task task)
     {
-        super(task);
         this.task = task;
     }
 
@@ -25,3 +22,4 @@ public class DailyItemViewModel extends itemBaseViewModel
         this.task = task;
     }
 }
+
