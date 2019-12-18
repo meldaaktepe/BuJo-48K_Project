@@ -20,13 +20,13 @@ public class CollectionRecyclerViewAdapter extends BaseRecyclerViewAdapter<Colle
     }
 
     @Override
-    protected void setViewHolderBindings(ViewDataBinding binding, Collection model)
+    protected void setViewHolderBindings(ViewDataBinding binding, int itemViewType, Collection model)
     {
         binding.setVariable(BR.viewModel, new CollectionItemViewModel(mViewModel, model));
     }
 
     @Override
-    protected int getItemViewId()
+    protected int getItemLayout(int viewType)
     {
         return R.layout.collection_with_items_item;
     }

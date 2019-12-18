@@ -5,15 +5,11 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
-import com.example.bujo_48k_projecjt.models.TaskType;
-import com.example.bujo_48k_projecjt.ui.common.Action.Action;
-import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
 import com.example.bujo_48k_projecjt.ui.settings.task_type_recycler.TaskTypeRecyclerViewAdapter;
 import com.example.bujo_48k_projecjt.ui.settings.task_type_recycler.TaskTypeRecyclerViewModel;
@@ -49,18 +45,14 @@ public class SettingsFragment extends BaseFragment
                 this
         );
 
-        taskTypeRecyclerViewModel.observeAction(this, new Observer<Action<TaskType, BasicAction>>()
+        taskTypeRecyclerViewModel.observeAction(this, chatAction ->
         {
-            @Override
-            public void onChanged(@Nullable Action<TaskType, BasicAction> chatAction)
-            {
-                if (chatAction == null) return;
+            if (chatAction == null) return;
 
-                switch (chatAction.getActionType())
-                {
-                    case RECYCLER_ITEM_CLICK:
-                        break;
-                }
+            switch (chatAction.getActionType())
+            {
+                case RECYCLER_ITEM_CLICK:
+                    break;
             }
         });
 

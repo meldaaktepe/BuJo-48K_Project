@@ -5,15 +5,11 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
-import com.example.bujo_48k_projecjt.models.Task;
-import com.example.bujo_48k_projecjt.ui.common.Action.Action;
-import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
 
 public class DailyFragment extends BaseFragment
@@ -50,18 +46,14 @@ public class DailyFragment extends BaseFragment
                 this
         );
 
-        dailyRecyclerViewModel.observeAction(this, new Observer<Action<Task, BasicAction>>()
+        dailyRecyclerViewModel.observeAction(this, chatAction ->
         {
-            @Override
-            public void onChanged(@Nullable Action<Task, BasicAction> chatAction)
-            {
-                if (chatAction == null) return;
+            if (chatAction == null) return;
 
-                switch (chatAction.getActionType())
-                {
-                    case RECYCLER_ITEM_CLICK:
-                        break;
-                }
+            switch (chatAction.getActionType())
+            {
+                case RECYCLER_ITEM_CLICK:
+                    break;
             }
         });
 

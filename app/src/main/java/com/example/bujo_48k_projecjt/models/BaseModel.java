@@ -8,4 +8,9 @@ public abstract class BaseModel extends BaseObservable
     {
         return toString();
     }
+
+    public long recyclerItemId()
+    {
+        return toString().hashCode();
+    }
 }

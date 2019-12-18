@@ -18,13 +18,13 @@ public class TaskTypeRecyclerViewAdapter extends BaseRecyclerViewAdapter<TaskTyp
     }
 
     @Override
-    protected void setViewHolderBindings(ViewDataBinding binding, TaskType model)
+    protected void setViewHolderBindings(ViewDataBinding binding, int itemViewType, TaskType model)
     {
         binding.setVariable(BR.viewModel, new TaskTypeItemViewModel(mViewModel, model));
     }
 
     @Override
-    protected int getItemViewId()
+    protected int getItemLayout(int viewType)
     {
         return R.layout.task_type_item;
     }

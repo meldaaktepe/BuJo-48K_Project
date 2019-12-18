@@ -2,7 +2,7 @@ package com.example.bujo_48k_projecjt.ui.common.Action;
 
 import com.example.bujo_48k_projecjt.models.BaseModel;
 
-public class Action<Model extends BaseModel, ActionType>
+public class Action<Model extends BaseModel, ActionType extends Enum>
 {
     private Model mModel;
     private ActionType mActionType;

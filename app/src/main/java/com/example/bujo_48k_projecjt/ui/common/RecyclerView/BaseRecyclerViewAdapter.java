@@ -6,12 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,28 +19,24 @@ import com.example.bujo_48k_projecjt.ui.common.BaseAndroidViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionType> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder>
+public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionType extends Enum> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder>
 {
     static private final String TAG = "BaseRecyclerViewAdapter";
 
-    class ViewHolder extends RecyclerView.ViewHolder
+    static class ViewHolder extends RecyclerView.ViewHolder
     {
-        private ViewDataBinding mBinding;
+        public ViewDataBinding mBinding;
 
-        ViewHolder(View instructorView, ViewDataBinding binding)
+        protected ViewHolder(View view, ViewDataBinding binding)
         {
-            super(instructorView);
+            super(view);
 
             mBinding = binding;
         }
     }
 
-    protected final ArrayList<Model> mData = new ArrayList<>();
+    protected final List<Model> mData = new ArrayList<>();
     protected final BaseAndroidViewModel<Model, ActionType> mViewModel;
-
-    protected abstract void setViewHolderBindings(ViewDataBinding binding, Model model);
-
-    protected abstract int getItemViewId();
 
     public BaseRecyclerViewAdapter(
             BaseRecyclerViewModel<Model, ActionType> baseRecyclerViewModel,
@@ -60,17 +54,14 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
 
         Log.d(TAG, "Created -> " + this.getClass().getSimpleName());
 
-        observableData.observe(lifecycleOwner, new Observer<List<Model>>()
-        {
-            @Override
-            public void onChanged(@Nullable List<Model> changedData)
-            {
-                setData(changedData);
-            }
-        });
+        observableData.observe(lifecycleOwner, this::setData);
 
         mViewModel = viewModel;
+
+        setHasStableIds(true);
     }
+
+    protected abstract int getItemLayout(int viewType);
 
     @NonNull
     @Override
@@ -78,7 +69,7 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
     {
         ViewDataBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                getItemViewId(),
+                getItemLayout(viewType),
                 parent,
                 false
         );
@@ -86,10 +77,18 @@ public abstract class BaseRecyclerViewAdapter<Model extends BaseModel, ActionTyp
         return new ViewHolder(binding.getRoot(), binding);
     }
 
+    protected abstract void setViewHolderBindings(ViewDataBinding binding, int itemViewType, Model model);
+
     @Override
     public void onBindViewHolder(@NonNull BaseRecyclerViewAdapter.ViewHolder holder, int position)
     {
-        setViewHolderBindings(holder.mBinding, mData.get(position));
+        setViewHolderBindings(holder.mBinding, holder.getItemViewType(), mData.get(position));
+    }
+
+    @Override
+    public long getItemId(int position)
+    {
+        return mData.get(position).recyclerItemId();
     }
 
     @Override

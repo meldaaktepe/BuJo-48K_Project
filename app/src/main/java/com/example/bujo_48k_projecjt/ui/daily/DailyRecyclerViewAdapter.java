@@ -20,13 +20,13 @@ public class DailyRecyclerViewAdapter extends BaseRecyclerViewAdapter<Task, Basi
     }
 
     @Override
-    protected void setViewHolderBindings(ViewDataBinding binding, Task model)
+    protected void setViewHolderBindings(ViewDataBinding binding, int itemViewType, Task model)
     {
         binding.setVariable(BR.viewModel, new DailyItemViewModel(model));
     }
 
     @Override
-    protected int getItemViewId()
+    protected int getItemLayout(int viewType)
     {
         return R.layout.daily_item;
     }
