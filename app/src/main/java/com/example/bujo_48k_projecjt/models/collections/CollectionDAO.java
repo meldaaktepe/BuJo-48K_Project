@@ -10,16 +10,26 @@ import java.util.List;
 @Dao
 public abstract class CollectionDAO
 {
-    //    @Insert
-    //    public abstract void Insert(collection... collections);
-
     @Insert
-    public abstract void InsertWithItems(Collection collection, List<Item> items);
+    public abstract void Insert(Collection... collections);
 
     @Delete
-    protected abstract void Delete(Collection collection);
+    public abstract void Delete(Collection collection);
 
     @Query("SELECT * FROM Collection")
-    public abstract List<CollectionWithItems> GetAllCollectionsWithItems();
+    public abstract List<Collection> GetAll();
 
+    @Query("SELECT * FROM Collection")
+    public abstract List<CollectionWithItems> GetAllWithItems();
+
+    @Query("SELECT * FROM Item LIMIT 1")
+    public abstract Item GetSingleTask();
+
+    public boolean HasAny()
+    {
+        return GetSingleTask() == null;
+    }
+
+    @Query("DELETE FROM Collection")
+    public abstract void DeleteAll();
 }

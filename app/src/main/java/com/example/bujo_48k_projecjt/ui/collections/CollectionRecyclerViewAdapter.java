@@ -4,24 +4,24 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.example.bujo_48k_projecjt.R;
-import com.example.bujo_48k_projecjt.models.collections.CollectionWithItems;
+import com.example.bujo_48k_projecjt.models.collections.Collection;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewAdapter;
 import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewModel;
 
-public class CollectionRecyclerViewAdapter extends BaseRecyclerViewAdapter<CollectionWithItems, BasicAction>
+public class CollectionRecyclerViewAdapter extends BaseRecyclerViewAdapter<Collection, BasicAction>
 {
     public CollectionRecyclerViewAdapter(
-            BaseRecyclerViewModel<CollectionWithItems, BasicAction> baseRecyclerViewModel,
+            BaseRecyclerViewModel<Collection, BasicAction> baseRecyclerViewModel,
             LifecycleOwner lifecycleOwner)
     {
         super(baseRecyclerViewModel, lifecycleOwner);
     }
 
     @Override
-    protected void setViewHolderBindings(ViewDataBinding binding, CollectionWithItems model)
+    protected void setViewHolderBindings(ViewDataBinding binding, Collection model)
     {
-        binding.setVariable(com.example.bujo_48k_projecjt.BR.viewModel, new CollectionWithItemsItemViewModel(model));
+        binding.setVariable(com.example.bujo_48k_projecjt.BR.viewModel, new CollectionItemViewModel(model));
     }
 
     @Override

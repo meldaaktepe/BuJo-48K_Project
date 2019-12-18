@@ -6,11 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Random;
 
-@Database(version = 1, entities = {Item.class, Collection.class})
+@Database(version = 5, entities = {Item.class, Collection.class})
 public abstract class CollectionDatabase extends RoomDatabase
 {
     static private CollectionDatabase instance = null;
@@ -19,8 +17,9 @@ public abstract class CollectionDatabase extends RoomDatabase
     {
         if (instance == null)
         {
-            instance = Room.databaseBuilder(context, CollectionDatabase.class, "Item Database")
+            instance = Room.databaseBuilder(context, CollectionDatabase.class, "Collection Database")
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build();
 
             instance.PopulateInitialData();
@@ -31,18 +30,35 @@ public abstract class CollectionDatabase extends RoomDatabase
 
     private void PopulateInitialData()
     {
-        List<Item> items = new ArrayList<>(Arrays.asList(
-                new Item("item 1"),
-                new Item("item 2"),
-                new Item("item 3"),
-                new Item("item 4")
-        ));
-
         CollectionDAO collectionDAO = GetCollectionDAO();
-        collectionDAO.InsertWithItems(new Collection("collection 1"), items);
-        collectionDAO.InsertWithItems(new Collection("collection 2"), items);
-        collectionDAO.InsertWithItems(new Collection("collection 3"), items);
+
+        if (collectionDAO.HasAny()) return;
+
+        collectionDAO.DeleteAll();
+        collectionDAO.Insert(
+                new Collection("collection 1"),
+                new Collection("collection 2"),
+                new Collection("collection 3")
+        );
+
+        ItemDAO itemDAO = GetItemDAO();
+
+        // Iterate on Collections from database so their ids will be valid
+        for (Collection collection : collectionDAO.GetAll())
+        {
+            int item_count = new Random().nextInt(2) + 3; // 3 to 5 items for each Collection
+
+            for (int i = 0; i < item_count; i++)
+            {
+                itemDAO.InsertItemsToCollection(
+                        collection,
+                        new Item("Item number " + i + " of collection[" + collection.id + "]")
+                );
+            }
+        }
     }
 
     public abstract CollectionDAO GetCollectionDAO();
+
+    public abstract ItemDAO GetItemDAO();
 }

@@ -7,11 +7,32 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface ItemDAO
+public abstract class ItemDAO
 {
     @Insert
-    public void Insert(Item... items);
+    protected abstract void Insert(Item... items);
+
+    public void InsertItemsToCollection(Collection collection, Item... items)
+    {
+        for (Item item : items)
+        {
+            item.collectionId = collection.id;
+        }
+
+        Insert(items);
+    }
 
     @Query("SELECT * FROM Item")
     public abstract List<Item> GetAllItems();
+
+    @Query("SELECT * FROM Item LIMIT 1")
+    public abstract Item GetSingleTask();
+
+    public boolean HasAny()
+    {
+        return GetSingleTask() == null;
+    }
+
+    @Query("DELETE FROM Item")
+    public abstract void DeleteAll();
 }

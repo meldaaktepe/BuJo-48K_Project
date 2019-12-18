@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.bujo_48k_projecjt.ui.collections.CollectionWithItemsItemViewModel" />
+            type="com.example.bujo_48k_projecjt.ui.collections.CollectionItemViewModel" />
 
     </data>
 

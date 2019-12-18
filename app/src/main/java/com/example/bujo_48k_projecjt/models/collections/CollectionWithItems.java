@@ -1,19 +1,19 @@
 package com.example.bujo_48k_projecjt.models.collections;
 
-import androidx.room.Embedded;
 import androidx.room.Relation;
-
-import com.example.bujo_48k_projecjt.models.BaseModel;
 
 import java.util.List;
 
-public class CollectionWithItems extends BaseModel
+public class CollectionWithItems extends Collection
 {
-    @Embedded
-    public Collection collection;
     @Relation(
             parentColumn = "id",
-            entityColumn = "listId"
+            entityColumn = "collectionId"
     )
     public List<Item> items;
+
+    public CollectionWithItems(String title)
+    {
+        super(title);
+    }
 }

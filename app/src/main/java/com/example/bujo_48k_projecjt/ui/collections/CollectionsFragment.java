@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
-import com.example.bujo_48k_projecjt.models.collections.CollectionWithItems;
+import com.example.bujo_48k_projecjt.models.collections.Collection;
 import com.example.bujo_48k_projecjt.ui.common.Action.Action;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
@@ -48,10 +48,10 @@ public class CollectionsFragment extends BaseFragment
                 this
         );
 
-        collectionRecyclerViewModel.observeAction(this, new Observer<Action<CollectionWithItems, BasicAction>>()
+        collectionRecyclerViewModel.observeAction(this, new Observer<Action<Collection, BasicAction>>()
         {
             @Override
-            public void onChanged(@Nullable Action<CollectionWithItems, BasicAction> chatAction)
+            public void onChanged(@Nullable Action<Collection, BasicAction> chatAction)
             {
                 if (chatAction == null) return;
 
