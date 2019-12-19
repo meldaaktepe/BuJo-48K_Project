@@ -11,13 +11,15 @@ public class TaskType extends BaseModel
     @PrimaryKey(autoGenerate = true)
     public long id;
 
-    public int importance;
+    public String name;
+    public int priority;
     public String emoji;
     public int color;
 
-    public TaskType(int importance, String emoji, int color)
+    public TaskType(String name, int priority, String emoji, int color)
     {
-        this.importance = importance;
+        this.name = name;
+        this.priority = priority;
         this.emoji = emoji;
         this.color = color;
     }

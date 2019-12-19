@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Database(version = 1, entities = {Task.class, TaskType.class}, exportSchema = false)
+@Database(version = 2, entities = {Task.class, TaskType.class}, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class TaskDatabase extends RoomDatabase
 {
@@ -43,9 +43,9 @@ public abstract class TaskDatabase extends RoomDatabase
         if (taskTypeDAO.HasAny()) return;
 
         taskTypeDAO.Insert(
-                new TaskType(1, "✨", Color.GREEN),
-                new TaskType(2, "📚", Color.BLUE),
-                new TaskType(3, "‼", Color.RED)
+                new TaskType("Hobby", 1, "✨", Color.GREEN),
+                new TaskType("Study", 2, "📚", Color.BLUE),
+                new TaskType("Important", 3, "‼", Color.RED)
         );
 
         ArrayList<Task> tasks = new ArrayList<>();

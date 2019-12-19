@@ -9,10 +9,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bujo_48k_projecjt.BR;
 import com.example.bujo_48k_projecjt.R;
+import com.example.bujo_48k_projecjt.models.tasks.TaskType;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
 import com.example.bujo_48k_projecjt.ui.settings.task_type_recycler.TaskTypeRecyclerViewAdapter;
 import com.example.bujo_48k_projecjt.ui.settings.task_type_recycler.TaskTypeRecyclerViewModel;
+import com.example.bujo_48k_projecjt.ui.task_type_editor.TaskTypeEditorActivity;
 
 public class SettingsFragment extends BaseFragment
 {
@@ -29,9 +32,34 @@ public class SettingsFragment extends BaseFragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
-        BindTaskTypeRecyclerView(view);
+        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
+        mViewDataBinding.setVariable(BR.viewModel, settingsViewModel);
 
+        settingsViewModel.observeAction(this, taskTypeBasicActionAction ->
+        {
+            if (taskTypeBasicActionAction == null) return;
+
+            switch (taskTypeBasicActionAction.getActionType())
+            {
+                case ON_FLOATING_ACTION_BUTTON_CLICK:
+                    StartTaskTypeEditor(taskTypeBasicActionAction.getModel());
+                    break;
+            }
+        });
+
+        BindTaskTypeRecyclerView(view);
         taskTypeRecyclerViewModel.fetchData();
+
+        taskTypeRecyclerViewModel.observeAction(this, taskTypeBasicActionAction ->
+        {
+            if (taskTypeBasicActionAction == null) return;
+
+            switch (taskTypeBasicActionAction.getActionType())
+            {
+                case RECYCLER_ITEM_CLICK:
+                    StartTaskTypeEditor(taskTypeBasicActionAction.getModel());
+            }
+        });
     }
 
     private void BindTaskTypeRecyclerView(View view)
@@ -60,5 +88,12 @@ public class SettingsFragment extends BaseFragment
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    private void StartTaskTypeEditor(TaskType taskType)
+    {
+        startActivity(
+                TaskTypeEditorActivity.CreateIntent(getContext(), taskType)
+        );
     }
 }
