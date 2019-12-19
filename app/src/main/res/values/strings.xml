@@ -111,6 +111,12 @@
     <string name="edit_button_description">Edit Button</string>
     <string name="task_types_list_title">Your Task Types</string>
 
-    <string name="title_activity_task_type_editor">TaskTypeEditorActivity</string>
+    <string name="title_activity_task_type_editor">Task Type Editor</string>
     <string name="task_type_emoji_label">Task Type Emoji:</string>
+
+    <string name="title_activity_task_editor">Task Editor</string>
+
+    <string name="task_description_label">Task Description:</string>
+
+    <string name="title_activity_task_type_picker">Task Type Picker</string>
 </resources>

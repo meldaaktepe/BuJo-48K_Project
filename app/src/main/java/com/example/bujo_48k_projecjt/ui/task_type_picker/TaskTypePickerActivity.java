@@ -1,53 +1,44 @@
-package com.example.bujo_48k_projecjt.ui.settings;
+package com.example.bujo_48k_projecjt.ui.task_type_picker;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bujo_48k_projecjt.BR;
 import com.example.bujo_48k_projecjt.R;
-import com.example.bujo_48k_projecjt.models.tasks.TaskType;
-import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
-import com.example.bujo_48k_projecjt.ui.task_type_editor.TaskTypeEditorActivity;
+import com.example.bujo_48k_projecjt.ui.common.BaseActivity;
 import com.example.bujo_48k_projecjt.ui.task_type_recycler.TaskTypeRecyclerViewAdapter;
 import com.example.bujo_48k_projecjt.ui.task_type_recycler.TaskTypeRecyclerViewModel;
 
-public class SettingsFragment extends BaseFragment
+public class TaskTypePickerActivity extends BaseActivity
 {
-    private SettingsViewModel settingsViewModel;
-
     private TaskTypeRecyclerViewModel taskTypeRecyclerViewModel;
 
     @Override
     protected int getLayoutId()
     {
-        return R.layout.fragment_settings;
+        return R.layout.activity_task_type_picker;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    protected void onCreate(Bundle savedInstanceState)
     {
-        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
-        mViewDataBinding.setVariable(BR.viewModel, settingsViewModel);
+        super.onCreate(savedInstanceState);
 
-        settingsViewModel.observeAction(this, taskTypeBasicActionAction ->
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
         {
-            if (taskTypeBasicActionAction == null) return;
+            actionBar.setTitle("Task Type Picker");
+            actionBar.setDisplayHomeAsUpEnabled(false);
+        }
 
-            switch (taskTypeBasicActionAction.getActionType())
-            {
-                case ON_FLOATING_ACTION_BUTTON_CLICK:
-                    StartTaskTypeEditor(taskTypeBasicActionAction.getModel());
-                    break;
-            }
-        });
-
-        BindTaskTypeRecyclerView(view);
+        BindTaskTypeRecyclerView(mViewDataBinding.getRoot());
         taskTypeRecyclerViewModel.fetchData();
 
         taskTypeRecyclerViewModel.observeAction(this, taskTypeBasicActionAction ->
@@ -57,7 +48,11 @@ public class SettingsFragment extends BaseFragment
             switch (taskTypeBasicActionAction.getActionType())
             {
                 case RECYCLER_ITEM_CLICK:
-                    StartTaskTypeEditor(taskTypeBasicActionAction.getModel());
+                    Intent intent = new Intent(this, TaskTypePickerActivity.class);
+                    intent.putExtra("taskTypeId", taskTypeBasicActionAction.getModel().id);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
+                    break;
             }
         });
     }
@@ -86,14 +81,12 @@ public class SettingsFragment extends BaseFragment
 
         recyclerView.setAdapter(adapter);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    private void StartTaskTypeEditor(TaskType taskType)
+    public static Intent CreateIntent(Context context)
     {
-        startActivity(
-                TaskTypeEditorActivity.CreateIntent(getContext(), taskType)
-        );
+        return new Intent(context, TaskTypePickerActivity.class);
     }
 }

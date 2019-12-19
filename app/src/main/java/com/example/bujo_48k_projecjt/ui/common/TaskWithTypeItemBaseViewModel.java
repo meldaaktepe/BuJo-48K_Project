@@ -1,5 +1,7 @@
 package com.example.bujo_48k_projecjt.ui.common;
 
+import android.view.View;
+
 import com.example.bujo_48k_projecjt.models.tasks.Task;
 import com.example.bujo_48k_projecjt.models.tasks.TaskType;
 import com.example.bujo_48k_projecjt.models.tasks.TaskWithType;
@@ -31,6 +33,11 @@ public class TaskWithTypeItemBaseViewModel extends BaseRecyclerItemViewModel<Tas
     public void setTaskType(TaskType taskType)
     {
         mModel.taskType = taskType;
+    }
+
+    public void OnItemClicked(View view)
+    {
+        mViewModel.setAction(mModel, BasicAction.RECYCLER_ITEM_CLICK);
     }
 }
 

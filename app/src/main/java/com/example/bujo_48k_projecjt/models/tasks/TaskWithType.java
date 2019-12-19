@@ -12,8 +12,8 @@ public class TaskWithType extends Task
     )
     public TaskType taskType;
 
-    public TaskWithType(String title, String description, Date dueDate)
+    public TaskWithType(String name, String description, Date dueDate)
     {
-        super(title, description, dueDate);
+        super(name, description, dueDate);
     }
 }

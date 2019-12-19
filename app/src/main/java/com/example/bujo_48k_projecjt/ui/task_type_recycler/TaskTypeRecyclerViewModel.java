@@ -1,4 +1,4 @@
-package com.example.bujo_48k_projecjt.ui.settings.task_type_recycler;
+package com.example.bujo_48k_projecjt.ui.task_type_recycler;
 
 import android.app.Application;
 

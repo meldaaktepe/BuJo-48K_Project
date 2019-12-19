@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Database(version = 2, entities = {Task.class, TaskType.class}, exportSchema = false)
+@Database(version = 3, entities = {Task.class, TaskType.class}, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class TaskDatabase extends RoomDatabase
 {

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.bujo_48k_projecjt.ui.settings.task_type_recycler.TaskTypeItemViewModel" />
+            type="com.example.bujo_48k_projecjt.ui.task_type_recycler.TaskTypeItemViewModel" />
 
         <import type="android.view.View" />
 

@@ -9,6 +9,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.task_type_picker.TaskTypePickerActivity"
+            android:label="@string/title_activity_task_type_picker"
+            android:parentActivityName=".ui.task_editor.TaskEditorActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bujo_48k_projecjt.ui.task_editor.TaskEditorActivity" />
+        </activity>
+        <activity
+            android:name=".ui.task_editor.TaskEditorActivity"
+            android:label="@string/title_activity_task_editor"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bujo_48k_projecjt.MainActivity" />
+        </activity>
+        <activity
             android:name=".ui.task_type_editor.TaskTypeEditorActivity"
             android:label="@string/title_activity_task_type_editor"
             android:parentActivityName=".MainActivity">
@@ -16,7 +32,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.bujo_48k_projecjt.MainActivity" />
         </activity>
-
         <activity
             android:name=".ui.items.ItemsActivity"
             android:label="@string/title_activity_items"
@@ -25,12 +40,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.bujo_48k_projecjt.MainActivity" />
         </activity>
-
         <activity
             android:name=".add_task"
             android:label="@string/title_activity_add_task"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

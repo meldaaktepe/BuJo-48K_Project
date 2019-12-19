@@ -4,26 +4,26 @@
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/setting_view_tab"
-        android:title="@string/title_settings" />
+        android:name="@string/title_settings" />
 
     <item
         android:id="@+id/navigation_yearly"
         android:icon="@drawable/year_view_tab"
-        android:title="@string/title_yearly" />
+        android:name="@string/title_yearly" />
 
     <item
         android:id="@+id/navigation_daily"
         android:icon="@drawable/day_view_tab"
-        android:title="@string/title_daily" />
+        android:name="@string/title_daily" />
 
     <item
         android:id="@+id/navigation_monthly"
         android:icon="@drawable/monthly_view_tab"
-        android:title="@string/title_monthly" />
+        android:name="@string/title_monthly" />
 
     <item
         android:id="@+id/navigation_collections"
         android:icon="@drawable/list_view_tab"
-        android:title="@string/title_collections" />
+        android:name="@string/title_collections" />
 
 </menu>

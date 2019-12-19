@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.bujo_48k_projecjt.ui.daily.DailyViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +25,6 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/daily_floating_button"
-            app="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/floating_action_bar_margin"
@@ -32,7 +35,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:rippleColor="@color/materialcolorpicker__lightgrey"
-            app:srcCompat="@drawable/ic_add_blue_24dp" />
+            app:srcCompat="@drawable/ic_add_blue_24dp"
+            android:onClick="@{viewModel::OnFloatingActionButtonclicked}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

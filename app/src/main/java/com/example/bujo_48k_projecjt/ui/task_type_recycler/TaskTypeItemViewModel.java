@@ -1,5 +1,6 @@
-package com.example.bujo_48k_projecjt.ui.settings.task_type_recycler;
+package com.example.bujo_48k_projecjt.ui.task_type_recycler;
 
+import android.util.Log;
 import android.view.View;
 
 import com.example.bujo_48k_projecjt.models.tasks.TaskType;
@@ -16,6 +17,8 @@ public class TaskTypeItemViewModel extends BaseRecyclerItemViewModel<TaskType, B
 
     public void OnItemClicked(View view)
     {
+        Log.d("aflsalsaf", "sd<gvsdfgsdf");
+
         mViewModel.setAction(mModel, BasicAction.RECYCLER_ITEM_CLICK);
     }
 }

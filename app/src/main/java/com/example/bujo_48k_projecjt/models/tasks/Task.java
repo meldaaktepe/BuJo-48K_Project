@@ -25,13 +25,13 @@ public class Task extends BaseModel
     @ColumnInfo(index = true)
     public long taskTypeId;
 
-    public String title;
-    public Date dueDate;
+    public String name;
     public String description;
+    public Date dueDate;
 
-    public Task(String title, String description, Date dueDate)
+    public Task(String name, String description, Date dueDate)
     {
-        this.title = title;
+        this.name = name;
         this.dueDate = dueDate;
         this.description = description;
     }

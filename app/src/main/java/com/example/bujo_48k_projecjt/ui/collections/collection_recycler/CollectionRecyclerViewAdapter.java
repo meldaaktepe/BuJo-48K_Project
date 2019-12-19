@@ -28,6 +28,6 @@ public class CollectionRecyclerViewAdapter extends BaseRecyclerViewAdapter<Colle
     @Override
     protected int getItemLayout(int viewType)
     {
-        return R.layout.collection_with_items_item;
+        return R.layout.collection_item;
     }
 }
