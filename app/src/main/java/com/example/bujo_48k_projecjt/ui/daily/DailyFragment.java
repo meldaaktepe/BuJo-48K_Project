@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
+import com.example.bujo_48k_projecjt.ui.daily.daily_recycler.DailyRecyclerViewAdapter;
+import com.example.bujo_48k_projecjt.ui.daily.daily_recycler.DailyRecyclerViewModel;
 
 public class DailyFragment extends BaseFragment
 {
@@ -29,17 +31,15 @@ public class DailyFragment extends BaseFragment
     {
         dailyViewModel = ViewModelProviders.of(this).get(DailyViewModel.class);
 
-        BinddailyRecyclerView(view);
-
+        BindDailyRecyclerView(view);
         dailyRecyclerViewModel.fetchData();
     }
 
-    private void BinddailyRecyclerView(View view)
+    private void BindDailyRecyclerView(View view)
     {
         RecyclerView recyclerView = view.findViewById(R.id.daily_recyler);
 
         dailyRecyclerViewModel = ViewModelProviders.of(this).get(DailyRecyclerViewModel.class);
-
 
         DailyRecyclerViewAdapter adapter = new DailyRecyclerViewAdapter(
                 dailyRecyclerViewModel,

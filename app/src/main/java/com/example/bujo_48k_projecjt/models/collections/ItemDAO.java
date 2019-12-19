@@ -25,13 +25,8 @@ public abstract class ItemDAO
     @Query("SELECT * FROM Item")
     public abstract List<Item> GetAllItems();
 
-    @Query("SELECT * FROM Item LIMIT 1")
-    public abstract Item GetSingleTask();
-
-    public boolean HasAny()
-    {
-        return GetSingleTask() == null;
-    }
+    @Query("SELECT COUNT(*) FROM Item LIMIT 1")
+    public abstract boolean HasAny();
 
     @Query("DELETE FROM Item")
     public abstract void DeleteAll();

@@ -31,13 +31,8 @@ public abstract class CollectionDAO
     @Query("SELECT * FROM Collection")
     public abstract List<CollectionWithItems> GetAllWithItems();
 
-    @Query("SELECT * FROM Item LIMIT 1")
-    public abstract Item GetSingleTask();
-
-    public boolean HasAny()
-    {
-        return GetSingleTask() != null;
-    }
+    @Query("SELECT COUNT(*) FROM Collection LIMIT 1")
+    public abstract boolean HasAny();
 
     @Query("DELETE FROM Collection")
     public abstract void DeleteAll();

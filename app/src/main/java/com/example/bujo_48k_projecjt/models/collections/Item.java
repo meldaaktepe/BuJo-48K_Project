@@ -1,5 +1,6 @@
 package com.example.bujo_48k_projecjt.models.collections;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -21,6 +22,7 @@ public class Item extends BaseModel
 
     public String text;
 
+    @ColumnInfo(index = true)
     public long collectionId;
 
     public Item(String text)

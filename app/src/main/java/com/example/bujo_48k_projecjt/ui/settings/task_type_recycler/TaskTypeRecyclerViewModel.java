@@ -5,7 +5,7 @@ import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 
-import com.example.bujo_48k_projecjt.models.TaskType;
+import com.example.bujo_48k_projecjt.models.tasks.TaskType;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewModel;
 

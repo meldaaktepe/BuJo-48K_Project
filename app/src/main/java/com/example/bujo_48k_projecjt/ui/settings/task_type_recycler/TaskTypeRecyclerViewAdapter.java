@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleOwner;
 
 import com.example.bujo_48k_projecjt.BR;
 import com.example.bujo_48k_projecjt.R;
-import com.example.bujo_48k_projecjt.models.TaskType;
+import com.example.bujo_48k_projecjt.models.tasks.TaskType;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewAdapter;
 import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewModel;
