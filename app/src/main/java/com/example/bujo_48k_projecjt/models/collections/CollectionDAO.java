@@ -17,8 +17,15 @@ public abstract class CollectionDAO
     @Delete
     public abstract void Delete(Collection collection);
 
+    @Query("SELECT * FROM Collection WHERE id=:id")
+    public abstract Collection Get(long id);
+
     @Query("SELECT * FROM Collection")
     public abstract List<Collection> GetAll();
+
+    @Transaction
+    @Query("SELECT * FROM Collection WHERE id=:id")
+    public abstract CollectionWithItems GetWithItems(long id);
 
     @Transaction
     @Query("SELECT * FROM Collection")
@@ -29,7 +36,7 @@ public abstract class CollectionDAO
 
     public boolean HasAny()
     {
-        return GetSingleTask() == null;
+        return GetSingleTask() != null;
     }
 
     @Query("DELETE FROM Collection")
