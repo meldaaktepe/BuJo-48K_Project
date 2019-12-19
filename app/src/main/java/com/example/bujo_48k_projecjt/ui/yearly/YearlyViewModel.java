@@ -6,17 +6,4 @@ import androidx.lifecycle.ViewModel;
 
 public class YearlyViewModel extends ViewModel
 {
-
-    private MutableLiveData<String> mText;
-
-    public YearlyViewModel()
-    {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is Yearly fragment");
-    }
-
-    public LiveData<String> getText()
-    {
-        return mText;
-    }
 }

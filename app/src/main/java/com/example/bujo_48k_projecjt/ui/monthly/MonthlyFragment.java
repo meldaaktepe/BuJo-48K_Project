@@ -1,36 +1,64 @@
 package com.example.bujo_48k_projecjt.ui.monthly;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
+import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
 
-public class MonthlyFragment extends Fragment
+public class MonthlyFragment extends BaseFragment
 {
     private MonthlyViewModel monthlyViewModel;
+    private MontlyRecyclerViewModel montlyRecyclerViewModel;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_monthly;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         monthlyViewModel = ViewModelProviders.of(this).get(MonthlyViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_monthly, container, false);
-        final TextView textView = root.findViewById(R.id.text_monthly);
-        monthlyViewModel.getText().observe(this, new Observer<String>()
+
+        BindmonthlyRecyclerView(view);
+
+        montlyRecyclerViewModel.fetchData();
+
+    }
+
+    private void BindmonthlyRecyclerView(View view)
+    {
+        RecyclerView recyclerView = view.findViewById(R.id.monthly_recyler);
+
+        montlyRecyclerViewModel = ViewModelProviders.of(this).get(MontlyRecyclerViewModel.class);
+
+        MonthlyRecyclerViewAdapter adapter = new MonthlyRecyclerViewAdapter(
+                montlyRecyclerViewModel,
+                this
+        );
+
+        montlyRecyclerViewModel.observeAction(this, chatAction ->
         {
-            @Override
-            public void onChanged(@Nullable String s)
+            if (chatAction == null) return;
+
+            switch (chatAction.getActionType())
             {
-                textView.setText(s);
+                case RECYCLER_ITEM_CLICK:
+                    break;
             }
         });
-        return root;
+
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
     }
 }
