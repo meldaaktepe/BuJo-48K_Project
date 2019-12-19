@@ -19,6 +19,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/collections_floating_button"
+            app="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/floating_action_bar_margin"
+            android:layout_marginBottom="@dimen/floating_action_bar_margin"
+            android:clickable="true"
+            android:focusable="true"
+            app:backgroundTint="#f2e9bf"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:rippleColor="@color/materialcolorpicker__lightgrey"
+            app:srcCompat="@drawable/ic_add_blue_24dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

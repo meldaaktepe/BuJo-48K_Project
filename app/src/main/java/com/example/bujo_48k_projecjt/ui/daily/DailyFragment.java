@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bujo_48k_projecjt.BR;
 import com.example.bujo_48k_projecjt.R;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
 import com.example.bujo_48k_projecjt.ui.daily.daily_recycler.DailyRecyclerViewAdapter;
