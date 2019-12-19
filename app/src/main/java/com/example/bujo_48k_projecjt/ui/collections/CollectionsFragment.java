@@ -1,7 +1,6 @@
 package com.example.bujo_48k_projecjt.ui.collections;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -11,9 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
+import com.example.bujo_48k_projecjt.models.collections.Collection;
 import com.example.bujo_48k_projecjt.ui.collections.collection_recycler.CollectionRecyclerViewAdapter;
 import com.example.bujo_48k_projecjt.ui.collections.collection_recycler.CollectionRecyclerViewModel;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
+import com.example.bujo_48k_projecjt.ui.items.ItemsActivity;
 
 public class CollectionsFragment extends BaseFragment
 {
@@ -54,8 +55,7 @@ public class CollectionsFragment extends BaseFragment
             switch (chatAction.getActionType())
             {
                 case RECYCLER_ITEM_CLICK:
-                    Log.d("RECYCLER_ITEM_CLICK", "click log");
-
+                    OnRecyclerItemClicked(chatAction.getModel());
                     break;
             }
         });
@@ -64,5 +64,12 @@ public class CollectionsFragment extends BaseFragment
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    private void OnRecyclerItemClicked(Collection collection)
+    {
+        startActivity(
+                ItemsActivity.CreateIntent(getContext(), collection)
+        );
     }
 }
