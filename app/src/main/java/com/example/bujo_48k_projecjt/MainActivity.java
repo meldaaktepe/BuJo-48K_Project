@@ -1,6 +1,8 @@
 package com.example.bujo_48k_projecjt;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -9,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.idescout.sql.SqlScoutServer;
 
 public class MainActivity extends AppCompatActivity
@@ -35,12 +38,13 @@ public class MainActivity extends AppCompatActivity
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-/*
-        FloatingActionButton fab = findViewById(R.id.Main_floating_button);
+
+ /*       FloatingActionButton fab = findViewById(R.id.daily_floating_button);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainActivity.this, add_task.class);
+                startActivity(i);
             }
         });*/
     }
