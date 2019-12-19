@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/Main_floating_button"
+            android:id="@+id/daily_floating_button"
             app="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
