@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bujo_48k_projecjt.R;
 import com.example.bujo_48k_projecjt.ui.common.BaseFragment;
+import com.example.bujo_48k_projecjt.ui.yearly.yearly_recycler.YearlyRecyclerViewAdapter;
+import com.example.bujo_48k_projecjt.ui.yearly.yearly_recycler.YearlyRecyclerViewModel;
 
 public class YearlyFragment extends BaseFragment
 {
@@ -19,23 +21,23 @@ public class YearlyFragment extends BaseFragment
     private YearlyRecyclerViewModel yearlyRecyclerViewModel;
 
     @Override
-    protected int getLayoutId() {
+    protected int getLayoutId()
+    {
         return R.layout.fragment_yearly;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
         yearlyViewModel = ViewModelProviders.of(this).get(YearlyViewModel.class);
 
-        BindyearlyRecyclerView(view);
-
+        BindYearlyRecyclerView(view);
         yearlyRecyclerViewModel.fetchData();
     }
 
-    private void BindyearlyRecyclerView(View view)
+    private void BindYearlyRecyclerView(View view)
     {
-        RecyclerView recyclerView = view.findViewById(R.id.yearly_recyler);
+        RecyclerView recyclerView = view.findViewById(R.id.yearly_recycler);
 
         yearlyRecyclerViewModel = ViewModelProviders.of(this).get(YearlyRecyclerViewModel.class);
 

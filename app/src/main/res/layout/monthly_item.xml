@@ -3,8 +3,8 @@
 
     <data>
         <variable
-            name="MviewModel"
-            type="com.example.bujo_48k_projecjt.ui.monthly.MontlyItemViewModel" />
+            name="viewModel"
+            type="com.example.bujo_48k_projecjt.ui.monthly.monthly_recycler.MonthlyTaskWithTypeItemViewModel" />
 
     </data>
 
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="70"
-                android:text="@{MviewModel.task.title}"
+                android:text="@{viewModel.task.title}"
                 android:textStyle="bold" />
 
             <TextView
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@{MviewModel.task.description}" />
+                android:text="@{viewModel.task.description}" />
 
         </LinearLayout>
 

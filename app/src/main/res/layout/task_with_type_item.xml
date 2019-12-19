@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.bujo_48k_projecjt.ui.daily.daily_recycler.DailyItemViewModel" />
+            type="com.example.bujo_48k_projecjt.ui.common.TaskWithTypeItemBaseViewModel" />
 
     </data>
 

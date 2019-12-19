@@ -37,7 +37,7 @@ public class DailyFragment extends BaseFragment
 
     private void BindDailyRecyclerView(View view)
     {
-        RecyclerView recyclerView = view.findViewById(R.id.daily_recyler);
+        RecyclerView recyclerView = view.findViewById(R.id.daily_recycler);
 
         dailyRecyclerViewModel = ViewModelProviders.of(this).get(DailyRecyclerViewModel.class);
 

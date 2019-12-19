@@ -3,8 +3,8 @@
     <data>
 
         <variable
-            name="yviewModel"
-            type="com.example.bujo_48k_projecjt.ui.yearly.YearlyItemViewModel" />
+            name="viewModel"
+            type="com.example.bujo_48k_projecjt.ui.yearly.yearly_recycler.YearlyTaskWithTypeItemViewModel" />
 
     </data>
 
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="70"
-                android:text="@{yviewModel.task.title}"
+                android:text="@{viewModel.task.title}"
                 android:textStyle="bold" />
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@{yviewModel.task.description}" />
+                android:text="@{viewModel.task.description}" />
 
         </LinearLayout>
 

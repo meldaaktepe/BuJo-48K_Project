@@ -1,4 +1,4 @@
-package com.example.bujo_48k_projecjt.ui.daily.daily_recycler;
+package com.example.bujo_48k_projecjt.ui.yearly.yearly_recycler;
 
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.LifecycleOwner;
@@ -10,9 +10,10 @@ import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
 import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewAdapter;
 import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerViewModel;
 
-public class DailyRecyclerViewAdapter extends BaseRecyclerViewAdapter<TaskWithType, BasicAction>
+
+public class YearlyRecyclerViewAdapter extends BaseRecyclerViewAdapter<TaskWithType, BasicAction>
 {
-    public DailyRecyclerViewAdapter(
+    public YearlyRecyclerViewAdapter(
             BaseRecyclerViewModel<TaskWithType, BasicAction> baseRecyclerViewModel,
             LifecycleOwner lifecycleOwner)
     {
@@ -20,14 +21,15 @@ public class DailyRecyclerViewAdapter extends BaseRecyclerViewAdapter<TaskWithTy
     }
 
     @Override
-    protected void setViewHolderBindings(ViewDataBinding binding, int itemViewType, TaskWithType model)
-    {
-        binding.setVariable(BR.viewModel, new DailyTaskWithTypeItemViewModel(mViewModel, model));
-    }
-
-    @Override
     protected int getItemLayout(int viewType)
     {
         return R.layout.task_with_type_item;
     }
+
+    @Override
+    protected void setViewHolderBindings(ViewDataBinding binding, int itemViewType, TaskWithType model)
+    {
+        binding.setVariable(BR.viewModel, new YearlyTaskWithTypeItemViewModel(mViewModel, model));
+    }
+
 }

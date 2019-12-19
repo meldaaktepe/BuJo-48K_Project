@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/daily_recyler"
+            android:id="@+id/daily_recycler"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,8 +24,8 @@
             app="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="@dimen/floating_action_bar_margin"
+            android:layout_marginBottom="@dimen/floating_action_bar_margin"
             android:clickable="true"
             android:focusable="true"
             app:backgroundTint="#f2e9bf"

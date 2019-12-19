@@ -4,34 +4,33 @@ import com.example.bujo_48k_projecjt.models.tasks.Task;
 import com.example.bujo_48k_projecjt.models.tasks.TaskType;
 import com.example.bujo_48k_projecjt.models.tasks.TaskWithType;
 import com.example.bujo_48k_projecjt.ui.common.Action.BasicAction;
+import com.example.bujo_48k_projecjt.ui.common.RecyclerView.BaseRecyclerItemViewModel;
 
-public class ItemBaseViewModel extends BaseViewModel<TaskWithType, BasicAction>
+public class TaskWithTypeItemBaseViewModel extends BaseRecyclerItemViewModel<TaskWithType, BasicAction>
 {
-    private TaskWithType taskWithType;
-
-    public ItemBaseViewModel(TaskWithType taskWithType)
+    public TaskWithTypeItemBaseViewModel(BaseAndroidViewModel<TaskWithType, BasicAction> viewModel, TaskWithType model)
     {
-        this.taskWithType = taskWithType;
+        super(viewModel, model);
     }
 
     public TaskWithType getTask()
     {
-        return taskWithType;
+        return mModel;
     }
 
     public void setTask(Task task)
     {
-        this.taskWithType = (TaskWithType) task;
+        this.mModel = (TaskWithType) task;
     }
 
     public TaskType getTaskType()
     {
-        return taskWithType.taskType;
+        return mModel.taskType;
     }
 
     public void setTaskType(TaskType taskType)
     {
-        taskWithType.taskType = taskType;
+        mModel.taskType = taskType;
     }
 }
 
